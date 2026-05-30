@@ -86,6 +86,7 @@ display:flex;
 justify-content:center;
 align-items:center;
 position:relative;
+  background-size:70%;
 }
 
 .hero-overlay{
