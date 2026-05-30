@@ -1,113 +1,8 @@
-function doPost(e) {
 
-const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("data");
-
-const data = JSON.parse(e.postData.contents);
-
-// simpan file avatar ke Drive (opsional tapi direkomendasikan)
-let fileUrl = "";
-
-if(data.avatar){
-
-const blob = Utilities.newBlob(
-Utilities.base64Decode(data.avatar),
-data.mimeType,
-data.fileName
-);
-
-const folder = DriveApp.getFolderById("YOUR_FOLDER_ID");
-const file = folder.createFile(blob);
-
-fileUrl = file.getUrl();
-}
-
-// simpan ke sheet
-sheet.appendRow([
-data.nama,
-data.hp,
-data.ign,
-fileUrl,
-new Date()
-]);
-
-return ContentService
-.createTextOutput(JSON.stringify({status:"success"}))
-.setMimeType(ContentService.MimeType.JSON);
-}
-
-
-// =====================
-// AMBIL DATA MEMBER
-// =====================
-function doGet() {
-
-const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("data");
-const values = sheet.getDataRange().getValues();
-
-let result = [];
-
-for(let i=1;i<values.length;i++){
-
-result.push({
-nama: values[i][0],
-hp: values[i][1],
-ign: values[i][2],
-avatar: values[i][3]
-});
-
-}
-
-return ContentService
-.createTextOutput(JSON.stringify(result))
-.setMimeType(ContentService.MimeType.JSON);
-}
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbylZnhZRyVVgU4Jnnn_JYmYdowf1eG_1FThjI5GLtWxGgWQe3tnjOPvPK_QjSDLoxFh/exec";
 
-// =========================
-// REGISTER SUBMIT
-// =========================
-document.addEventListener("DOMContentLoaded", () => {
+let guildMembers = [];
 
-const form = document.getElementById("guildForm");
-
-form.addEventListener("submit", async (e) => {
-e.preventDefault();
-
-const nama = form.nama.value;
-const hp = form.hp.value;
-const ign = form.ign.value;
-const file = form.avatar.files[0];
-
-const reader = new FileReader();
-
-reader.onload = async function () {
-
-const base64 = reader.result.split(",")[1];
-
-const payload = {
-nama,
-hp,
-ign,
-avatar: base64,
-mimeType: file.type,
-fileName: file.name
-};
-
-await fetch(SCRIPT_URL, {
-method: "POST",
-body: JSON.stringify(payload)
-});
-
-showToast("🔥 Berhasil daftar Guild!");
-
-loadMembers(); // langsung update list
-};
-
-reader.readAsDataURL(file);
-
-});
-
-});
 // =========================
 // LOAD MEMBERS
 // =========================
@@ -122,7 +17,7 @@ renderMembers();
 updateStats();
 
 }catch(err){
-console.log(err);
+console.log("Load error:", err);
 }
 
 }
@@ -143,7 +38,7 @@ guildMembers
 
 container.innerHTML += `
 <div class="member">
-  <img src="${m.avatar}" />
+  <img src="${m.avatar || 'https://via.placeholder.com/80'}">
   <h3>${m.nama}</h3>
   <span>${m.ign}</span>
 </div>
@@ -154,49 +49,73 @@ container.innerHTML += `
 }
 
 // =========================
+// UPDATE STATS
+// =========================
+function updateStats(){
+
+const el = document.getElementById("memberCount");
+if(el) el.textContent = guildMembers.length;
+
+}
+
+// =========================
+// AUTO UPDATE (FIXED - NO RECURSIVE ERROR)
+// =========================
+function startAutoUpdate(){
+
+loadMembers();
+
+setInterval(() => {
+loadMembers();
+}, 5000);
+
+}
+
+// =========================
 // REGISTER FORM
 // =========================
 document.addEventListener("DOMContentLoaded", () => {
 
 const form = document.getElementById("guildForm");
 
-form.addEventListener("submit", async (e) => {
+if(form){
+
+form.addEventListener("submit", (e) => {
 e.preventDefault();
 
-const nama = form.nama.value;
-const hp = form.hp.value;
-const ign = form.ign.value;
 const file = form.avatar.files[0];
-
 const reader = new FileReader();
 
 reader.onload = async function(){
 
-const base64 = reader.result.split(",")[1];
-
-const data = {
-nama,
-hp,
-ign,
-avatar: base64,
+const payload = {
+nama: form.nama.value,
+hp: form.hp.value,
+ign: form.ign.value,
+avatar: reader.result.split(",")[1],
 mimeType: file.type,
 fileName: file.name
 };
 
 await fetch(SCRIPT_URL, {
-method:"POST",
-body: JSON.stringify(data)
+method: "POST",
+body: JSON.stringify(payload)
 });
 
-alert("🔥 Berhasil daftar guild!");
+showToast("🔥 Berhasil daftar Guild!");
 
-startAutoUpdate();
+loadMembers();
 
 };
 
 reader.readAsDataURL(file);
 
 });
+
+});
+
+// start system
+startAutoUpdate();
 
 });
 
@@ -208,28 +127,6 @@ renderMembers(e.target.value);
 });
 
 // =========================
-// STATS
-// =========================
-function updateStats(){
-
-const el = document.getElementById("memberCount");
-if(el){
-el.textContent = guildMembers.length;
-}
-
-}
-function startAutoUpdate(){
-
-// ambil pertama kali
-startAutoUpdate();
-
-// update setiap 5 detik
-setInterval(() => {
-startAutoUpdate();
-}, 5000);
-
-}
-// =========================
 // MODAL
 // =========================
 function openModal(){
@@ -239,8 +136,3 @@ document.getElementById("loginModal").style.display = "flex";
 function closeModal(){
 document.getElementById("loginModal").style.display = "none";
 }
-
-// =========================
-// INIT
-// =========================
-loadMembers();
