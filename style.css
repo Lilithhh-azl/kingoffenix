@@ -304,7 +304,76 @@ margin-top:0;
 }
 }
 
-/* SEARCH BOX */ .search-box{ display:flex; justify-content:center; margin-bottom:40px; } .search-box input{ width:420px; max-width:90%; padding:15px 20px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,215,0,0.15); border-radius:16px; backdrop-filter:blur(10px); color:white; font-size:15px; transition:all .3s ease; box-shadow: 0 0 15px rgba(255,140,0,0.08); } .search-box input::placeholder{ color:#8b95a7; } .search-box input:focus{ outline:none; border-color:var(--orange); box-shadow: 0 0 20px rgba(255,140,0,.25), 0 0 40px rgba(255,215,0,.1); transform:translateY(-2px); }
+.search-box{
+display:flex;
+align-items:center;
+
+width:420px;
+max-width:90%;
+margin:0 auto 40px;
+
+padding:0 18px;
+
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,215,0,0.15);
+border-radius:16px;
+
+backdrop-filter:blur(10px);
+box-shadow:0 0 15px rgba(255,140,0,0.08);
+
+transition:.3s;
+}
+
+/* ICON DI DALAM BOX */
+.search-box i{
+color:var(--gold);
+font-size:16px;
+margin-right:12px;
+
+padding:10px;
+border-radius:10px;
+
+background:rgba(255,140,0,0.08);
+border:1px solid rgba(255,215,0,0.15);
+
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+/* INPUT TANPA BOX SENDIRI */
+.search-box input{
+flex:1;
+
+padding:15px 0;
+
+border:none;
+outline:none;
+
+background:transparent;
+color:white;
+font-size:15px;
+}
+
+.search-box input::placeholder{
+color:#8b95a7;
+}
+
+/* FOCUS EFFECT */
+.search-box:focus-within{
+border-color:var(--orange);
+box-shadow:
+0 0 20px rgba(255,140,0,.25),
+0 0 40px rgba(255,215,0,.1);
+
+transform:translateY(-2px);
+}
+
+/* ICON HOVER GLOW */
+.search-box:focus-within i{
+color:var(--orange);
+box-shadow:0 0 15px rgba(255,140,0,.3);
+}
 
 /* MODAL */
 .modal{
