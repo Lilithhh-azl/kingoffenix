@@ -78,15 +78,10 @@ cursor:pointer;
 /* HERO */
 
 .hero{
-height:100vh;
 background:
-url("assets/New KOF-01 (1).jpg")
-center/center;
-display:flex;
-justify-content:center;
-align-items:center;
-position:relative;
-  background-size:70%;
+url("assets/banner.jpg")
+center center / contain no-repeat;
+background-color:#0A0F1F;
 }
 
 .hero-overlay{
