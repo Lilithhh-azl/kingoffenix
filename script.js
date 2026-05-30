@@ -83,6 +83,15 @@ if(form){
 
 form.addEventListener("submit", (e) => {
 e.preventDefault();
+  await fetch(SCRIPT_URL, {
+method: "POST",
+body: JSON.stringify({
+nama,
+hp,
+ign,
+avatar
+})
+});
 
 const file = form.avatar.files[0];
 const reader = new FileReader();
