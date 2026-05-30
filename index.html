@@ -6,8 +6,11 @@
 
 <title>King Of Fenix</title>
 
-<link rel="stylesheet" href="style.css">
+<!-- FIX: pakai ./ biar aman di GitHub Pages -->
+<link rel="stylesheet" href="./style.css">
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
@@ -15,8 +18,10 @@
 
 <!-- NAVBAR -->
 <nav class="navbar">
+
 <a href="#dashboard" class="logo">
-  <img src="assets/Logo.png" class="logo-img">
+  <!-- FIX: pastikan folder & nama file benar -->
+  <img src="./assets/Logo.png" class="logo-img" alt="logo">
   <span>KING OF FENIX</span>
 </a>
 
@@ -26,6 +31,7 @@
 </ul>
 
 <button class="admin-btn" onclick="openModal()">Admin</button>
+
 </nav>
 
 <!-- HERO -->
@@ -43,6 +49,7 @@
 
 <!-- REGISTER -->
 <section id="register">
+
 <h2 class="section-title">🔥 Guild Registration</h2>
 
 <div class="register-card">
@@ -76,10 +83,12 @@ Daftar Guild
 </form>
 
 </div>
+
 </section>
 
-<!-- SEARCH -->
+<!-- MEMBERS -->
 <section id="members">
+
 <h2 class="section-title">Guild Members</h2>
 
 <div class="search-box">
@@ -88,18 +97,27 @@ Daftar Guild
 </div>
 
 <div id="memberList" class="member-grid"></div>
+
 </section>
 
 <!-- MODAL -->
 <div id="loginModal" class="modal">
+
 <div class="modal-content">
+
 <h2>Admin Login</h2>
+
 <input type="password" id="adminPassword" placeholder="Password">
+
 <button onclick="adminLogin()">Login</button>
 <button onclick="closeModal()">Close</button>
-</div>
+
 </div>
 
-<script src="script.js"></script>
+</div>
+
+<!-- FIX: gunakan ./ juga -->
+<script src="./script.js"></script>
+
 </body>
 </html>
