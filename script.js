@@ -52,27 +52,25 @@ container.innerHTML = "";
 
 guildMembers
 .filter(member=>
-(member.Nama || "")
+(member.nama || "")
 .toLowerCase()
 .includes(filter.toLowerCase())
 )
 .forEach(member=>{
 
 container.innerHTML += `
-
 <div class="member">
 
 <img
-src="${member.avatar}"
-alt="${member.Nama}"
+src="${member.avatar || ''}"
+alt="${member.nama}"
 >
 
-<h3>${member.Nama}</h3>
+<h3>${member.nama}</h3>
 
-<span>${member.posisi}</span>
+<span>${member.ign || 'Member'}</span>
 
 </div>
-
 `;
 
 });
