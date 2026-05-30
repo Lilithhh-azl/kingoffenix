@@ -81,7 +81,7 @@ cursor:pointer;
 height:100vh;
 background:
 url("assets/New KOF-01 (1).jpg")
-center/cover;
+center/center;
 display:flex;
 justify-content:center;
 align-items:center;
