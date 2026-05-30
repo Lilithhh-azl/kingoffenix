@@ -4,43 +4,37 @@
 
 const guildMembers = [
 {
-name:"Lilith",
+name:"CaelumVallis",
 rank:"Guild Master",
 points:2500,
 avatar:"https://i.pravatar.cc/300?img=1"
 },
 {
-name:"Sizy",
-rank:"Officer",
+name:"Phos",
+rank:"Vice Guild Master",
 points:1800,
 avatar:"https://i.pravatar.cc/300?img=2"
 },
 {
-name:"Aori",
-rank:"Raid Leader",
+name:"Claraeldyn",
+rank:"Vice Guild Master",
 points:1650,
 avatar:"https://i.pravatar.cc/300?img=3"
 },
 {
-name:"Ristek",
-rank:"Elite Member",
+name:"Wulan",
+rank:"Vice Guild Master",
 points:1400,
 avatar:"https://i.pravatar.cc/300?img=4"
 },
-{
-name:"Kuro",
-rank:"Member",
-points:1200,
-avatar:"https://i.pravatar.cc/300?img=5"
-}
 ];
 
 const recentActivities = [
-"🔥 Lilith completed Weekly Raid",
-"🏆 Sizy promoted to Officer",
-"⚔️ Aori defeated World Boss",
-"🎁 Ristek donated 5000 Gold",
-"⭐ Kuro completed 10 quests"
+"🔥 Phos completed Weekly Raid",
+"🏆 Phos promoted to Officer",
+"⚔️ Phos defeated World Boss",
+"🎁 Phos donated 5000 Gold",
+"⭐ Phos completed 10 quests"
 ];
 
 function renderMembers(filter=""){
