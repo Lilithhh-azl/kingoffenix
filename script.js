@@ -1,33 +1,37 @@
 // ===============================
 // KING OF FENIX DATABASE
 // ===============================
+async function loadMembers(){
 
-const guildMembers = [
-{
-name:"CaelumVallis",
-rank:"Guild Master",
-points:2500,
-avatar:"https://i.pravatar.cc/300?img=1"
-},
-{
-name:"Phos",
-rank:"Vice Guild Master",
-points:1800,
-avatar:"https://i.pravatar.cc/300?img=2"
-},
-{
-name:"Claraeldyn",
-rank:"Vice Guild Master",
-points:1650,
-avatar:"https://i.pravatar.cc/300?img=3"
-},
-{
-name:"Wulan",
-rank:"Vice Guild Master",
-points:1400,
-avatar:"https://i.pravatar.cc/300?img=4"
-},
-];
+const response = await fetch(
+"https://script.google.com/macros/s/AKfycbztn4xjLwJCz9b0NZrE0XFvJSQo5FQiazS6nenTAlZ81mzoJjivnEG-55KJy1diFK8w/exec"
+);
+
+const members = await response.json();
+
+renderMembers(members);
+
+}
+function renderMembers(members){
+
+const container =
+document.getElementById("memberList");
+
+container.innerHTML = "";
+
+members.forEach(member=>{
+
+container.innerHTML += `
+<div class="member">
+<img src="${member.Avatar}">
+<h3>${member.Name}</h3>
+<span>${member.Rank}</span>
+</div>
+`;
+
+});
+
+}
 
 const recentActivities = [
 "🔥 Phos completed Weekly Raid",
@@ -205,6 +209,11 @@ openModal
 );
 
 }
-
+document.addEventListener(
+"DOMContentLoaded",
+()=>{
+loadMembers();
+}
+);
 }
 );
