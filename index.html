@@ -245,12 +245,32 @@ Aori
 </div>
 
 </section>
+  <section id="activity">
+
+<h2 class="section-title">
+Recent Activity
+</h2>
+
+<div id="activityFeed" class="activity-feed">
+
+</div>
+
+</section>
 
 <section id="members">
 
 <h2 class="section-title">
 Guild Members
 </h2>
+  <div class="search-box">
+
+<input
+type="text"
+id="memberSearch"
+placeholder="Search member..."
+>
+
+</div>
 
 <div id="memberList" class="member-grid">
 
@@ -360,5 +380,28 @@ Guild Management System
 
 <script src="script.js"></script>
 
+  <div id="loginModal" class="modal">
+
+<div class="modal-content">
+
+<h2>Admin Login</h2>
+
+<input
+type="password"
+id="adminPassword"
+placeholder="Password"
+>
+
+<button onclick="adminLogin()">
+Login
+</button>
+
+<button onclick="closeModal()">
+Close
+</button>
+
+</div>
+
+</div>
 </body>
 </html>
