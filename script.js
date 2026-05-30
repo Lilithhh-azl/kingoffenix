@@ -1,75 +1,45 @@
-// ====================================
-// KING OF FENIX DATABASE SYSTEM
-// ====================================
-
 let guildMembers = [];
 
-// ====================================
-// GOOGLE SHEET API
-// ====================================
+const SCRIPT_URL = "YOUR_GOOGLE_SCRIPT_URL";
 
+// =========================
+// LOAD MEMBERS
+// =========================
 async function loadMembers(){
 
 try{
 
-const response = await fetch(
-"https://script.google.com/macros/s/AKfycbztn4xjLwJCz9b0NZrE0XFvJSQo5FQiazS6nenTAlZ81mzoJjivnEG-55KJy1diFK8w/exec"
-);
-
-guildMembers = await response.json();
+const res = await fetch(SCRIPT_URL);
+guildMembers = await res.json();
 
 renderMembers();
-
 updateStats();
 
-}catch(error){
-
-console.error(
-"Failed to load members:",
-error
-);
-
-showToast(
-"Failed to load member database"
-);
-
+}catch(err){
+console.log(err);
 }
 
 }
 
-// ====================================
-// MEMBER RENDER
-// ====================================
-
+// =========================
+// RENDER MEMBERS
+// =========================
 function renderMembers(filter=""){
 
-const container =
-document.getElementById("memberList");
-
+const container = document.getElementById("memberList");
 if(!container) return;
 
 container.innerHTML = "";
 
 guildMembers
-.filter(member=>
-(member.nama || "")
-.toLowerCase()
-.includes(filter.toLowerCase())
-)
-.forEach(member=>{
+.filter(m => (m.nama || "").toLowerCase().includes(filter.toLowerCase()))
+.forEach(m => {
 
 container.innerHTML += `
 <div class="member">
-
-<img
-src="${member.avatar || ''}"
-alt="${member.nama}"
->
-
-<h3>${member.nama}</h3>
-
-<span>${member.ign || 'Member'}</span>
-
+  <img src="${m.avatar}" />
+  <h3>${m.nama}</h3>
+  <span>${m.ign}</span>
 </div>
 `;
 
@@ -77,200 +47,84 @@ alt="${member.nama}"
 
 }
 
-// ====================================
-// ACTIVITY FEED
-// ====================================
+// =========================
+// REGISTER FORM
+// =========================
+document.addEventListener("DOMContentLoaded", () => {
 
-const recentActivities = [
+const form = document.getElementById("guildForm");
 
-"🔥 Guild database connected",
-"🏆 New members can join",
-"⚔️ Weekly raid available",
-"🎁 Guild donation active",
-"⭐ Welcome to King Of Fenix"
+form.addEventListener("submit", async (e) => {
+e.preventDefault();
 
-];
+const nama = form.nama.value;
+const hp = form.hp.value;
+const ign = form.ign.value;
+const file = form.avatar.files[0];
 
-function renderActivities(){
+const reader = new FileReader();
 
-const feed =
-document.getElementById("activityFeed");
+reader.onload = async function(){
 
-if(!feed) return;
+const base64 = reader.result.split(",")[1];
 
-feed.innerHTML = "";
+const data = {
+nama,
+hp,
+ign,
+avatar: base64,
+mimeType: file.type,
+fileName: file.name
+};
 
-recentActivities.forEach(activity=>{
+await fetch(SCRIPT_URL, {
+method:"POST",
+body: JSON.stringify(data)
+});
 
-feed.innerHTML += `
+alert("🔥 Berhasil daftar guild!");
 
-<div class="activity-item">
+loadMembers();
 
-${activity}
+};
 
-</div>
-
-`;
+reader.readAsDataURL(file);
 
 });
 
-}
+});
 
-// ====================================
+// =========================
+// SEARCH
+// =========================
+document.getElementById("memberSearch")?.addEventListener("input", (e)=>{
+renderMembers(e.target.value);
+});
+
+// =========================
 // STATS
-// ====================================
-
-function goRegister(){
-  document.getElementById("register")
-  .scrollIntoView({
-    behavior: "smooth"
-  });
-}
-
+// =========================
 function updateStats(){
 
-const memberCount =
-document.getElementById("memberCount");
-
-if(memberCount){
-
-memberCount.textContent =
-guildMembers.length;
-
+const el = document.getElementById("memberCount");
+if(el){
+el.textContent = guildMembers.length;
 }
 
 }
 
-// ====================================
-// ADMIN LOGIN
-// ====================================
-
+// =========================
+// MODAL
+// =========================
 function openModal(){
-
-const modal =
-document.getElementById("loginModal");
-
-if(modal){
-
-modal.style.display = "flex";
-
-}
-
+document.getElementById("loginModal").style.display = "flex";
 }
 
 function closeModal(){
-
-const modal =
-document.getElementById("loginModal");
-
-if(modal){
-
-modal.style.display = "none";
-
+document.getElementById("loginModal").style.display = "none";
 }
 
-}
-
-function adminLogin(){
-
-const password =
-document.getElementById("adminPassword")
-.value;
-
-if(password === "fenix123"){
-
-showToast(
-"Login Success"
-);
-
-closeModal();
-
-}else{
-
-showToast(
-"Wrong Password"
-);
-
-}
-
-}
-
-// ====================================
-// TOAST
-// ====================================
-
-function showToast(message){
-
-const toast =
-document.createElement("div");
-
-toast.className =
-"toast";
-
-toast.textContent =
-message;
-
-document.body.appendChild(
-toast
-);
-
-setTimeout(()=>{
-
-toast.remove();
-
-},2500);
-
-}
-
-// ====================================
-// PAGE LOAD
-// ====================================
-
-document.addEventListener(
-"DOMContentLoaded",
-()=>{
-
-// Load Spreadsheet Data
+// =========================
+// INIT
+// =========================
 loadMembers();
-
-// Activity Feed
-renderActivities();
-
-// Search Member
-const search =
-document.getElementById(
-"memberSearch"
-);
-
-if(search){
-
-search.addEventListener(
-"input",
-e=>{
-
-renderMembers(
-e.target.value
-);
-
-}
-);
-
-}
-
-// Admin Button
-const adminBtn =
-document.querySelector(
-".admin-btn"
-);
-
-if(adminBtn){
-
-adminBtn.addEventListener(
-"click",
-openModal
-);
-
-}
-
-}
-);
