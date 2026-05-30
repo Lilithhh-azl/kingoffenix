@@ -78,10 +78,10 @@ cursor:pointer;
 /* HERO */
 
 .hero{
-background:
-url("assets/banner.jpg")
-center center / contain no-repeat;
-background-color:#0A0F1F;
+background-image:url("assets/banner.jpg");
+background-position:center;
+background-repeat:no-repeat;
+background-size:80%;
 }
 
 .hero-overlay{
