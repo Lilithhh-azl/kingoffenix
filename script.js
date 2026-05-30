@@ -122,6 +122,13 @@ ${activity}
 // STATS
 // ====================================
 
+function goRegister(){
+  document.getElementById("register")
+  .scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
 function updateStats(){
 
 const memberCount =
