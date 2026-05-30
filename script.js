@@ -75,7 +75,8 @@ loadMembers();
 // REGISTER FORM
 // =========================
 document.addEventListener("DOMContentLoaded", () => {
-
+document.getElementById("guildForm").addEventListener("submit", async (e) => {
+e.preventDefault(); // 🔥 INI WAJIB
 const form = document.getElementById("guildForm");
 
 if(form){
@@ -125,6 +126,7 @@ startAutoUpdate();
 document.getElementById("memberSearch")?.addEventListener("input", (e)=>{
 renderMembers(e.target.value);
 });
+
 
 // =========================
 // MODAL
