@@ -3,56 +3,245 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>King Of Fenix</title>
 
 <link rel="stylesheet" href="style.css">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
 <link
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 />
+
 </head>
 
 <body>
 
-<header>
+<nav class="navbar">
 
-<div class="overlay"></div>
+<div class="logo">
+🔥 KING OF FENIX
+</div>
+
+<ul class="nav-links">
+
+<li>
+<a href="#dashboard">Dashboard</a>
+</li>
+
+<li>
+<a href="#members">Members</a>
+</li>
+
+<li>
+<a href="#quests">Quest Board</a>
+</li>
+
+<li>
+<a href="#ranking">Ranking</a>
+</li>
+
+<li>
+<a href="#news">News</a>
+</li>
+
+</ul>
+
+<button class="admin-btn">
+Admin Login
+</button>
+
+</nav>
+
+<section class="hero" id="dashboard">
+
+<div class="hero-overlay"></div>
 
 <div class="hero-content">
 
-<h1>KING OF FENIX</h1>
+<h1>
+RISE TOGETHER
+</h1>
 
-<p>Guild Database & Quest Center</p>
+<h2>
+CONQUER TOGETHER
+</h2>
 
-<a href="#members" class="btn">
+<p>
+Official Guild Management Portal
+</p>
+
+<div class="hero-buttons">
+
+<button class="primary-btn">
 View Members
-</a>
+</button>
+
+<button class="secondary-btn">
+Quest Board
+</button>
 
 </div>
 
-</header>
+</div>
+
+</section>
 
 <section class="stats">
 
-<div class="card">
-<h2 id="memberCount">0</h2>
-<p>Members</p>
+<div class="stat-card">
+
+<i class="fa-solid fa-users"></i>
+
+<h2 id="memberCount">
+0
+</h2>
+
+<p>
+Members
+</p>
+
 </div>
 
-<div class="card">
-<h2>120</h2>
-<p>Completed Quest</p>
+<div class="stat-card">
+
+<i class="fa-solid fa-crown"></i>
+
+<h2>
+12
+</h2>
+
+<p>
+Officers
+</p>
+
 </div>
 
-<div class="card">
-<h2>57</h2>
-<p>Active Players</p>
+<div class="stat-card">
+
+<i class="fa-solid fa-scroll"></i>
+
+<h2>
+127
+</h2>
+
+<p>
+Completed Quest
+</p>
+
 </div>
 
-<div class="card">
-<h2>12</h2>
-<p>Officers</p>
+<div class="stat-card">
+
+<i class="fa-solid fa-fire"></i>
+
+<h2>
+15
+</h2>
+
+<p>
+Guild Level
+</p>
+
+</div>
+
+</section>
+
+<section class="featured-quest">
+
+<h2 class="section-title">
+Featured Weekly Quest
+</h2>
+
+<div class="quest-highlight">
+
+<div>
+
+<h3>
+Phoenix Ascension
+</h3>
+
+<p>
+Complete 10 Guild Raids and earn exclusive guild rewards.
+</p>
+
+</div>
+
+<div class="reward-box">
+
+Reward
+
+<h4>
+5000 Points
+</h4>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="ranking">
+
+<h2 class="section-title">
+Top Contributors
+</h2>
+
+<div class="leaderboard">
+
+<div class="leader-card gold">
+
+<h3>
+#1
+</h3>
+
+<p>
+Lilith
+</p>
+
+<span>
+2500 pts
+</span>
+
+</div>
+
+<div class="leader-card silver">
+
+<h3>
+#2
+</h3>
+
+<p>
+Sizy
+</p>
+
+<span>
+1800 pts
+</span>
+
+</div>
+
+<div class="leader-card bronze">
+
+<h3>
+#3
+</h3>
+
+<p>
+Aori
+</p>
+
+<span>
+1650 pts
+</span>
+
+</div>
+
 </div>
 
 </section>
@@ -69,28 +258,81 @@ Guild Members
 
 </section>
 
-<section>
+<section id="quests">
 
 <h2 class="section-title">
-Guild Quest
+Quest Board
 </h2>
 
-<div class="quest-list">
+<div class="quest-grid">
 
-<div class="quest">
-<h3>Weekly Raid</h3>
-<p>Complete raid 5x</p>
+<div class="quest-card">
+
+<h3>
+Weekly Raid
+</h3>
+
+<p>
+Participate in 5 raids.
+</p>
+
+<span>
+Reward: 1000 pts
+</span>
+
 </div>
 
-<div class="quest">
-<h3>Guild Donation</h3>
-<p>Donate 5000 Gold</p>
+<div class="quest-card">
+
+<h3>
+Guild Donation
+</h3>
+
+<p>
+Donate 5000 gold.
+</p>
+
+<span>
+Reward: 500 pts
+</span>
+
 </div>
 
-<div class="quest">
-<h3>Boss Hunt</h3>
-<p>Kill 3 World Bosses</p>
+<div class="quest-card">
+
+<h3>
+World Boss Hunt
+</h3>
+
+<p>
+Defeat 3 world bosses.
+</p>
+
+<span>
+Reward: 1500 pts
+</span>
+
 </div>
+
+</div>
+
+</section>
+
+<section id="news">
+
+<h2 class="section-title">
+Guild News
+</h2>
+
+<div class="news-card">
+
+<h3>
+Guild Expansion Event
+</h3>
+
+<p>
+New recruitment period is now open. Invite active players and earn bonus rewards.
+</p>
 
 </div>
 
@@ -98,7 +340,21 @@ Guild Quest
 
 <footer>
 
-KING OF FENIX © 2026
+<div class="footer-content">
+
+<h3>
+🔥 KING OF FENIX
+</h3>
+
+<p>
+Guild Management System
+</p>
+
+<span>
+© 2026 King Of Fenix
+</span>
+
+</div>
 
 </footer>
 
