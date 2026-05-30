@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,186 +7,99 @@
 <title>King Of Fenix</title>
 
 <link rel="stylesheet" href="style.css">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body>
 
 <!-- NAVBAR -->
 <nav class="navbar">
-
 <a href="#dashboard" class="logo">
-    <img src="assets/Logo King of Fenix.png" class="logo-img">
-    <span>KING OF FENIX</span>
+  <img src="assets/Logo.png" class="logo-img">
+  <span>KING OF FENIX</span>
 </a>
 
 <ul class="nav-links">
-
-<li><a href="#dashboard">Dashboard</a></li>
-<li><a href="#members">Members</a></li>
-<li><a href="#news">News</a></li>
-
+  <li><a href="#register">Register</a></li>
+  <li><a href="#members">Members</a></li>
 </ul>
 
-<button class="admin-btn">
-Admin Login
-</button>
-
+<button class="admin-btn" onclick="openModal()">Admin</button>
 </nav>
 
 <!-- HERO -->
 <section class="hero" id="dashboard">
-
 <div class="hero-overlay"></div>
 
 <div class="hero-content">
+  <h1>RISE TOGETHER</h1>
+  <h2>CONQUER TOGETHER</h2>
+  <p>Guild Recruitment System</p>
 
-<h1>FLY HIGHER</h1>
-<h2>KOFER</h2>
-
-<p>Official Guild</p>
-
-<a href="#register" class="primary-btn">
-Join Guild
-</a>
-
+  <a href="#register" class="primary-btn">Join Guild</a>
 </div>
-
-</div>
-
 </section>
 
-<!-- STATS -->
-<section class="stats">
-
-<div class="stat-card">
-<i class="fa-solid fa-users"></i>
-<h2 id="memberCount">0</h2>
-<p>Members</p>
-</div>
-
-<div class="stat-card">
-<i class="fa-solid fa-crown"></i>
-<h2>12</h2>
-<p>Officers</p>
-</div>
-
-<div class="stat-card">
-<i class="fa-solid fa-fire"></i>
-<h2>15</h2>
-<p>Guild Level</p>
-</div>
-
-</section>
-
-<!-- REGISTRATION FORM (NEW CORE FEATURE) -->
+<!-- REGISTER -->
 <section id="register">
-
-<h2 class="section-title">
-🔥 Guild Registration
-</h2>
+<h2 class="section-title">🔥 Guild Registration</h2>
 
 <div class="register-card">
 
-<form id="guildForm">
+<form id="guildForm" class="register-form">
+
+<div class="form-left">
 
 <label>Nama</label>
-<input type="text" placeholder="Nama lengkap" required>
+<input type="text" name="nama" required>
 
 <label>Nomor HP</label>
-<input type="tel" placeholder="08xxxxxxxxxx" required>
+<input type="tel" name="hp" required>
 
-<label>Nickname In-Game</label>
-<input type="text" placeholder="IGN kamu" required>
+<label>IGN</label>
+<input type="text" name="ign" required>
 
-<label>Upload Avatar</label>
-<input type="file" accept="image/*" required>
+</div>
 
-<button type="submit" class="primary-btn">
+<div class="form-right">
+
+<label>Avatar</label>
+<input type="file" name="avatar" accept="image/*" required>
+
+<button type="submit" class="primary-btn full-btn">
 Daftar Guild
 </button>
+
+</div>
 
 </form>
 
 </div>
-
 </section>
 
-<!-- MEMBERS -->
+<!-- SEARCH -->
 <section id="members">
-
-<h2 class="section-title">
-Guild Members
-</h2>
+<h2 class="section-title">Guild Members</h2>
 
 <div class="search-box">
-
-<i class="fa-solid fa-magnifying-glass"></i>
-
-<input type="text" id="memberSearch" placeholder="Search guild member...">
-
+<i class="fa fa-search"></i>
+<input type="text" id="memberSearch" placeholder="Search member...">
 </div>
 
 <div id="memberList" class="member-grid"></div>
-
 </section>
 
-<!-- NEWS -->
-<section id="news">
-
-<h2 class="section-title">
-Guild News
-</h2>
-
-<div class="news-card">
-
-<h3>Guild Expansion Event</h3>
-
-<p>
-New recruitment period is now open. Join the Guild and become part of King of Fenix.
-</p>
-
-</div>
-
-</section>
-
-<!-- FOOTER -->
-<footer>
-
-<div class="footer-content">
-
-<h3>🔥 KING OF FENIX</h3>
-<p>Guild Management System</p>
-<span>© 2026 King Of Fenix</span>
-
-</div>
-
-</footer>
-
-<!-- ADMIN LOGIN -->
+<!-- MODAL -->
 <div id="loginModal" class="modal">
-
 <div class="modal-content">
-
 <h2>Admin Login</h2>
-
 <input type="password" id="adminPassword" placeholder="Password">
-
 <button onclick="adminLogin()">Login</button>
 <button onclick="closeModal()">Close</button>
-
 </div>
-
 </div>
 
 <script src="script.js"></script>
-
 </body>
 </html>
