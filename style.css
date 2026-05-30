@@ -1,7 +1,126 @@
-body {
-    background: #111827;
-    color: white;
-    font-family: Arial, sans-serif;
-    text-align: center;
-    padding-top: 100px;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:sans-serif;
+}
+
+body{
+background:#0a0f1f;
+color:white;
+}
+
+header{
+height:100vh;
+background:url("https://images.unsplash.com/photo-1511512578047-dfb367046420")
+center/cover;
+position:relative;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.overlay{
+position:absolute;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.6);
+}
+
+.hero-content{
+position:relative;
+text-align:center;
+z-index:2;
+}
+
+.hero-content h1{
+font-size:70px;
+margin-bottom:15px;
+}
+
+.hero-content p{
+font-size:20px;
+opacity:.8;
+margin-bottom:20px;
+}
+
+.btn{
+padding:12px 24px;
+background:#ff7b00;
+color:white;
+text-decoration:none;
+border-radius:10px;
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
+padding:50px;
+}
+
+.card{
+background:#111827;
+padding:30px;
+border-radius:15px;
+text-align:center;
+}
+
+.card h2{
+font-size:40px;
+color:#ff7b00;
+}
+
+.section-title{
+text-align:center;
+font-size:40px;
+margin:50px 0;
+}
+
+.member-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+padding:30px;
+}
+
+.member{
+background:#111827;
+padding:20px;
+border-radius:15px;
+text-align:center;
+}
+
+.member img{
+width:90px;
+height:90px;
+border-radius:50%;
+margin-bottom:10px;
+}
+
+.member h3{
+margin-bottom:5px;
+}
+
+.member span{
+color:#ff7b00;
+}
+
+.quest-list{
+padding:30px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.quest{
+background:#111827;
+padding:20px;
+border-radius:15px;
+}
+
+footer{
+padding:40px;
+text-align:center;
+opacity:.7;
 }
