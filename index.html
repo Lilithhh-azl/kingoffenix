@@ -13,15 +13,13 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-<link
-rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-/>
-
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 </head>
 
 <body>
 
+<!-- NAVBAR -->
 <nav class="navbar">
 
 <a href="#dashboard" class="logo">
@@ -31,25 +29,9 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 
 <ul class="nav-links">
 
-<li>
-<a href="#dashboard">Dashboard</a>
-</li>
-
-<li>
-<a href="#members">Members</a>
-</li>
-
-<li>
-<a href="#quests">Quest Board</a>
-</li>
-
-<li>
-<a href="#ranking">Ranking</a>
-</li>
-
-<li>
-<a href="#news">News</a>
-</li>
+<li><a href="#dashboard">Dashboard</a></li>
+<li><a href="#members">Members</a></li>
+<li><a href="#news">News</a></li>
 
 </ul>
 
@@ -59,32 +41,22 @@ Admin Login
 
 </nav>
 
+<!-- HERO -->
 <section class="hero" id="dashboard">
 
 <div class="hero-overlay"></div>
 
 <div class="hero-content">
 
-<h1>
-RISE TOGETHER
-</h1>
+<h1>RISE TOGETHER</h1>
+<h2>CONQUER TOGETHER</h2>
 
-<h2>
-CONQUER TOGETHER
-</h2>
-
-<p>
-Official Guild Management Portal
-</p>
+<p>Official Guild Management Portal</p>
 
 <div class="hero-buttons">
 
 <button class="primary-btn">
-View Members
-</button>
-
-<button class="secondary-btn">
-Quest Board
+Join Guild
 </button>
 
 </div>
@@ -93,254 +65,82 @@ Quest Board
 
 </section>
 
+<!-- STATS -->
 <section class="stats">
 
 <div class="stat-card">
-
 <i class="fa-solid fa-users"></i>
-
-<h2 id="memberCount">
-0
-</h2>
-
-<p>
-Members
-</p>
-
+<h2 id="memberCount">0</h2>
+<p>Members</p>
 </div>
 
 <div class="stat-card">
-
 <i class="fa-solid fa-crown"></i>
-
-<h2>
-12
-</h2>
-
-<p>
-Officers
-</p>
-
+<h2>12</h2>
+<p>Officers</p>
 </div>
 
 <div class="stat-card">
-
-<i class="fa-solid fa-scroll"></i>
-
-<h2>
-127
-</h2>
-
-<p>
-Completed Quest
-</p>
-
-</div>
-
-<div class="stat-card">
-
 <i class="fa-solid fa-fire"></i>
-
-<h2>
-15
-</h2>
-
-<p>
-Guild Level
-</p>
-
+<h2>15</h2>
+<p>Guild Level</p>
 </div>
 
 </section>
 
-<section class="featured-quest">
+<!-- REGISTRATION FORM (NEW CORE FEATURE) -->
+<section id="register">
 
 <h2 class="section-title">
-Featured Weekly Quest
+🔥 Guild Registration
 </h2>
 
-<div class="quest-highlight">
+<div class="register-card">
 
-<div>
+<form id="guildForm">
 
-<h3>
-Phoenix Ascension
-</h3>
+<label>Nama</label>
+<input type="text" placeholder="Nama lengkap" required>
 
-<p>
-Complete 10 Guild Raids and earn exclusive guild rewards.
-</p>
+<label>Nomor HP</label>
+<input type="tel" placeholder="08xxxxxxxxxx" required>
 
-</div>
+<label>Nickname In-Game</label>
+<input type="text" placeholder="IGN kamu" required>
 
-<div class="reward-box">
+<label>Upload Avatar</label>
+<input type="file" accept="image/*" required>
 
-Reward
+<button type="submit" class="primary-btn">
+Daftar Guild
+</button>
 
-<h4>
-5000 Points
-</h4>
-
-</div>
+</form>
 
 </div>
 
 </section>
 
-<section id="ranking">
-
-<h2 class="section-title">
-Top Contributors
-</h2>
-
-<div class="leaderboard">
-
-<div class="leader-card gold">
-
-<h3>
-#1
-</h3>
-
-<p>
-Phos
-</p>
-
-<span>
-2500 pts
-</span>
-
-</div>
-
-<div class="leader-card silver">
-
-<h3>
-#2
-</h3>
-
-<p>
-Phos
-</p>
-
-<span>
-1800 pts
-</span>
-
-</div>
-
-<div class="leader-card bronze">
-
-<h3>
-#3
-</h3>
-
-<p>
-Phos
-</p>
-
-<span>
-1650 pts
-</span>
-
-</div>
-
-</div>
-
-</section>
-  <section id="activity">
-
-<h2 class="section-title">
-Recent Activity
-</h2>
-
-<div id="activityFeed" class="activity-feed">
-
-</div>
-
-</section>
-
+<!-- MEMBERS -->
 <section id="members">
 
 <h2 class="section-title">
 Guild Members
 </h2>
-  <div class="search-box">
+
+<div class="search-box">
 
 <i class="fa-solid fa-magnifying-glass"></i>
 
-<input
-type="text"
-id="memberSearch"
-placeholder="Search guild member..."
->
+<input type="text" id="memberSearch" placeholder="Search guild member...">
 
 </div>
 
-<div id="memberList" class="member-grid">
-
-</div>
+<div id="memberList" class="member-grid"></div>
 
 </section>
 
-<section id="quests">
-
-<h2 class="section-title">
-Quest Board
-</h2>
-
-<div class="quest-grid">
-
-<div class="quest-card">
-
-<h3>
-Weekly Raid
-</h3>
-
-<p>
-Participate in 5 raids.
-</p>
-
-<span>
-Reward: 1000 pts
-</span>
-
-</div>
-
-<div class="quest-card">
-
-<h3>
-Guild Donation
-</h3>
-
-<p>
-Donate 5000 gold.
-</p>
-
-<span>
-Reward: 500 pts
-</span>
-
-</div>
-
-<div class="quest-card">
-
-<h3>
-World Boss Hunt
-</h3>
-
-<p>
-Defeat 3 world bosses.
-</p>
-
-<span>
-Reward: 1500 pts
-</span>
-
-</div>
-
-</div>
-
-</section>
-
+<!-- NEWS -->
 <section id="news">
 
 <h2 class="section-title">
@@ -349,62 +149,46 @@ Guild News
 
 <div class="news-card">
 
-<h3>
-Guild Expansion Event
-</h3>
+<h3>Guild Expansion Event</h3>
 
 <p>
-New recruitment period is now open. Invite active players and earn bonus rewards.
+New recruitment period is now open. Join the Guild and become part of King of Fenix.
 </p>
 
 </div>
 
 </section>
 
+<!-- FOOTER -->
 <footer>
 
 <div class="footer-content">
 
-<h3>
-🔥 KING OF FENIX
-</h3>
-
-<p>
-Guild Management System
-</p>
-
-<span>
-© 2026 King Of Fenix
-</span>
+<h3>🔥 KING OF FENIX</h3>
+<p>Guild Management System</p>
+<span>© 2026 King Of Fenix</span>
 
 </div>
 
 </footer>
 
-<script src="script.js"></script>
-
-  <div id="loginModal" class="modal">
+<!-- ADMIN LOGIN -->
+<div id="loginModal" class="modal">
 
 <div class="modal-content">
 
 <h2>Admin Login</h2>
 
-<input
-type="password"
-id="adminPassword"
-placeholder="Password"
->
+<input type="password" id="adminPassword" placeholder="Password">
 
-<button onclick="adminLogin()">
-Login
-</button>
-
-<button onclick="closeModal()">
-Close
-</button>
+<button onclick="adminLogin()">Login</button>
+<button onclick="closeModal()">Close</button>
 
 </div>
 
 </div>
+
+<script src="script.js"></script>
+
 </body>
 </html>
