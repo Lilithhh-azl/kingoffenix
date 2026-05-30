@@ -115,11 +115,11 @@ el.textContent = guildMembers.length;
 function startAutoUpdate(){
 
 // ambil pertama kali
-loadMembers();
+startAutoUpdate();
 
 // update setiap 5 detik
 setInterval(() => {
-  loadMembers();
+startAutoUpdate();
 }, 5000);
 
 }
