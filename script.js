@@ -1,5 +1,5 @@
 
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbylZnhZRyVVgU4Jnnn_JYmYdowf1eG_1FThjI5GLtWxGgWQe3tnjOPvPK_QjSDLoxFh/exec";
+
 
 let guildMembers = [];
 
@@ -9,7 +9,7 @@ let guildMembers = [];
 async function loadMembers(){
 
 try{
-
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbylZnhZRyVVgU4Jnnn_JYmYdowf1eG_1FThjI5GLtWxGgWQe3tnjOPvPK_QjSDLoxFh/exec";
 const res = await fetch(SCRIPT_URL);
 guildMembers = await res.json();
 
