@@ -1,45 +1,45 @@
-// ===============================
-// KING OF FENIX DATABASE
-// ===============================
+// ====================================
+// KING OF FENIX DATABASE SYSTEM
+// ====================================
+
+let guildMembers = [];
+
+// ====================================
+// GOOGLE SHEET API
+// ====================================
+
 async function loadMembers(){
+
+try{
 
 const response = await fetch(
 "https://script.google.com/macros/s/AKfycbztn4xjLwJCz9b0NZrE0XFvJSQo5FQiazS6nenTAlZ81mzoJjivnEG-55KJy1diFK8w/exec"
 );
 
-const members = await response.json();
+guildMembers = await response.json();
 
-renderMembers(members);
+renderMembers();
 
-}
-function renderMembers(members){
+updateStats();
 
-const container =
-document.getElementById("memberList");
+}catch(error){
 
-container.innerHTML = "";
+console.error(
+"Failed to load members:",
+error
+);
 
-members.forEach(member=>{
-
-container.innerHTML += `
-<div class="member">
-<img src="${member.Avatar}">
-<h3>${member.Name}</h3>
-<span>${member.Rank}</span>
-</div>
-`;
-
-});
+showToast(
+"Failed to load member database"
+);
 
 }
 
-const recentActivities = [
-"🔥 Phos completed Weekly Raid",
-"🏆 Phos promoted to Officer",
-"⚔️ Phos defeated World Boss",
-"🎁 Phos donated 5000 Gold",
-"⭐ Phos completed 10 quests"
-];
+}
+
+// ====================================
+// MEMBER RENDER
+// ====================================
 
 function renderMembers(filter=""){
 
@@ -52,31 +52,46 @@ container.innerHTML = "";
 
 guildMembers
 .filter(member=>
-member.name
+(member.Nama || "")
 .toLowerCase()
 .includes(filter.toLowerCase())
 )
 .forEach(member=>{
 
 container.innerHTML += `
+
 <div class="member">
 
-<img src="${member.avatar}">
+<img
+src="${member.avatar}"
+alt="${member.Nama}"
+>
 
-<h3>${member.name}</h3>
+<h3>${member.Nama}</h3>
 
-<span>${member.rank}</span>
-
-<p>
-⭐ ${member.points} pts
-</p>
+<span>${member.posisi}</span>
 
 </div>
+
 `;
 
 });
 
 }
+
+// ====================================
+// ACTIVITY FEED
+// ====================================
+
+const recentActivities = [
+
+"🔥 Guild database connected",
+"🏆 New members can join",
+"⚔️ Weekly raid available",
+"🎁 Guild donation active",
+"⭐ Welcome to King Of Fenix"
+
+];
 
 function renderActivities(){
 
@@ -90,14 +105,22 @@ feed.innerHTML = "";
 recentActivities.forEach(activity=>{
 
 feed.innerHTML += `
+
 <div class="activity-item">
+
 ${activity}
+
 </div>
+
 `;
 
 });
 
 }
+
+// ====================================
+// STATS
+// ====================================
 
 function updateStats(){
 
@@ -113,17 +136,33 @@ guildMembers.length;
 
 }
 
+// ====================================
+// ADMIN LOGIN
+// ====================================
+
 function openModal(){
 
-document.getElementById("loginModal")
-.style.display="flex";
+const modal =
+document.getElementById("loginModal");
+
+if(modal){
+
+modal.style.display = "flex";
+
+}
 
 }
 
 function closeModal(){
 
-document.getElementById("loginModal")
-.style.display="none";
+const modal =
+document.getElementById("loginModal");
+
+if(modal){
+
+modal.style.display = "none";
+
+}
 
 }
 
@@ -133,7 +172,7 @@ const password =
 document.getElementById("adminPassword")
 .value;
 
-if(password==="fenix123"){
+if(password === "fenix123"){
 
 showToast(
 "Login Success"
@@ -151,16 +190,24 @@ showToast(
 
 }
 
+// ====================================
+// TOAST
+// ====================================
+
 function showToast(message){
 
 const toast =
 document.createElement("div");
 
-toast.className="toast";
+toast.className =
+"toast";
 
-toast.textContent=message;
+toast.textContent =
+message;
 
-document.body.appendChild(toast);
+document.body.appendChild(
+toast
+);
 
 setTimeout(()=>{
 
@@ -170,18 +217,25 @@ toast.remove();
 
 }
 
+// ====================================
+// PAGE LOAD
+// ====================================
+
 document.addEventListener(
 "DOMContentLoaded",
 ()=>{
 
-renderMembers();
+// Load Spreadsheet Data
+loadMembers();
 
+// Activity Feed
 renderActivities();
 
-updateStats();
-
+// Search Member
 const search =
-document.getElementById("memberSearch");
+document.getElementById(
+"memberSearch"
+);
 
 if(search){
 
@@ -198,8 +252,11 @@ e.target.value
 
 }
 
+// Admin Button
 const adminBtn =
-document.querySelector(".admin-btn");
+document.querySelector(
+".admin-btn"
+);
 
 if(adminBtn){
 
@@ -209,11 +266,6 @@ openModal
 );
 
 }
-document.addEventListener(
-"DOMContentLoaded",
-()=>{
-loadMembers();
-}
-);
+
 }
 );
