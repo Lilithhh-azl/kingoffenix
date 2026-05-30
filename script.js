@@ -84,7 +84,7 @@ body: JSON.stringify(data)
 
 alert("🔥 Berhasil daftar guild!");
 
-loadMembers();
+startAutoUpdate();
 
 };
 
@@ -112,7 +112,17 @@ el.textContent = guildMembers.length;
 }
 
 }
+function startAutoUpdate(){
 
+// ambil pertama kali
+loadMembers();
+
+// update setiap 5 detik
+setInterval(() => {
+  loadMembers();
+}, 5000);
+
+}
 // =========================
 // MODAL
 // =========================
