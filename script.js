@@ -11,7 +11,7 @@ document
     const data = {
         nickname: document.getElementById("nickname").value,
         class: document.getElementById("class").value,
-        level: document.getElementById("nohp").value
+        nohp: document.getElementById("nohp").value
     };
 
     try{
