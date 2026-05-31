@@ -2,36 +2,43 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>King of Fenix</title>
-<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
 
-<div class="hero">
+<!-- HERO -->
+<section class="hero">
   <h1>KING OF FENIX</h1>
-  <p>Guild of Legends</p>
-</div>
+  <p>Guild of Legends • Rise From Ashes</p>
+</section>
 
-<div class="form-section">
+<!-- FORM -->
+<section class="form-section">
   <h2>Join Guild</h2>
 
   <form id="regForm">
-    <input type="text" id="nama" placeholder="Nama" required>
-    <input type="text" id="hp" placeholder="No HP" required>
-    <input type="text" id="ign" placeholder="IGN">
-    <input type="text" id="avatar" placeholder="Avatar URL">
-    <button type="submit">Daftar</button>
+    <input id="nama" type="text" placeholder="Nama" required>
+    <input id="hp" type="text" placeholder="No HP" required>
+    <input id="ign" type="text" placeholder="IGN">
+    <input id="avatar" type="text" placeholder="Avatar URL">
+    <button type="submit">Register</button>
   </form>
 
   <p id="status"></p>
-</div>
+</section>
 
-<div class="section">
+<!-- MEMBERS -->
+<section class="members-section">
   <h2>Members</h2>
   <div id="members" class="grid"></div>
-</div>
+</section>
 
-<script src="script.js"></script>
+<script src="./script.js"></script>
+
 </body>
 </html>
