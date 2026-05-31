@@ -40,7 +40,7 @@ async function loadMembers() {
   const res = await fetch(API_URL);
   const data = await res.json();
 
-  const table = document.getElementById("memberTable");
+  const table = document.getElementById("membersTable");
   table.innerHTML = "";
 
   data.forEach(m => {
