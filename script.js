@@ -11,7 +11,7 @@ document
     const data = {
         nickname: document.getElementById("nickname").value,
         class: document.getElementById("class").value,
-        level: document.getElementById("level").value
+        level: document.getElementById("nohp").value
     };
 
     try{
@@ -51,7 +51,7 @@ async function loadMembers(){
             <tr>
                 <td>${member.nickname}</td>
                 <td>${member.class}</td>
-                <td>${member.level}</td>
+                <td>${member.nohp}</td>
             </tr>
         `;
 
