@@ -34,28 +34,30 @@ document
     }
 
 });
+const isAdmin = false;
 
-async function loadMembers(){
+async function loadMembers() {
+  const res = await fetch(API_URL);
+  const data = await res.json();
 
-    const res = await fetch(API_URL);
+  const table = document.getElementById("memberTable");
+  table.innerHTML = "";
 
-    const data = await res.json();
+  data.forEach(m => {
+    table.innerHTML += `
+      <tr>
+        <td>${m.nickname}</td>
 
-    const table = document.getElementById("membersTable");
+        <td>
+          <img src="${m.avatar}" 
+               style="width:50px;height:50px;border-radius:50%;border:2px solid orange;">
+        </td>
 
-    table.innerHTML="";
-
-    data.forEach(member=>{
-
-        table.innerHTML += `
-            <tr>
-                <td>${member.nickname}</td>
-                <td>${member.class}</td>
-                <td>${member.nohp}</td>
-            </tr>
-        `;
-
-    });
+        <td>${isAdmin ? m.nohp : "🔒 Hidden"}</td>
+      </tr>
+    `;
+  });
+}
 
     document.getElementById("memberCount").innerText = data.length;
 
