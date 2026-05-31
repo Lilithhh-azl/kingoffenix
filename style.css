@@ -1,122 +1,202 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap');
-
-body {
-  margin: 0;
-  font-family: 'Orbitron', sans-serif;
-  background: radial-gradient(circle at top, #111, #000);
-  color: white;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Segoe UI,sans-serif;
 }
 
-/* HERO */
-.hero {
-  height: 70vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-
-  background:
-    radial-gradient(circle at center, rgba(255,0,0,0.25), transparent 60%),
-    radial-gradient(circle at top, #111, #000);
+body{
+    background:#0d0d0d;
+    color:white;
 }
 
-.hero h1 {
-  font-size: 70px;
-  color: #ff2a2a;
-  text-shadow: 0 0 20px red, 0 0 60px rgba(255,0,0,0.6);
-  letter-spacing: 5px;
+header{
+    background:#111;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 50px;
+    border-bottom:2px solid gold;
+    position:sticky;
+    top:0;
+    z-index:999;
 }
 
-.hero p {
-  color: #aaa;
-  letter-spacing: 2px;
+.logo{
+    color:gold;
+    font-size:28px;
+    font-weight:bold;
 }
 
-/* FORM */
-.form-section {
-  padding: 40px;
-  text-align: center;
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:20px;
 }
 
-form {
-  width: 320px;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-
-  padding: 20px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,0,0,0.2);
-  backdrop-filter: blur(10px);
-  border-radius: 15px;
+nav a:hover{
+    color:orange;
 }
 
-input {
-  padding: 12px;
-  border: none;
-  border-radius: 8px;
-  background: rgba(0,0,0,0.6);
-  color: white;
-  outline: none;
+.hero{
+    height:100vh;
+    background:url("assets/bg.jpg") center center/cover;
+    position:relative;
 }
 
-button {
-  padding: 12px;
-  border: none;
-  border-radius: 8px;
-  background: linear-gradient(90deg, #ff0000, #8b0000);
-  color: white;
-  cursor: pointer;
-  transition: 0.3s;
+.overlay{
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.65);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
 }
 
-button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px red;
+.overlay h1{
+    font-size:60px;
+    color:gold;
 }
 
-/* MEMBERS */
-.members-section {
-  padding: 40px;
-  text-align: center;
+.overlay p{
+    margin-top:15px;
+    font-size:22px;
 }
 
-.grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
+.overlay button{
+    margin-top:30px;
+    padding:15px 40px;
+    background:orange;
+    border:none;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
 }
 
-.card {
-  width: 200px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,0,0,0.2);
-  border-radius: 15px;
-  overflow: hidden;
-  transition: 0.3s;
-  backdrop-filter: blur(8px);
+.overlay button:hover{
+    background:gold;
+    color:black;
 }
 
-.card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 0 25px rgba(255,0,0,0.6);
+.guild-info{
+    padding:80px 20px;
+    text-align:center;
 }
 
-.card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
+.guild-info h2{
+    color:gold;
+    margin-bottom:40px;
 }
 
-.card h3 {
-  margin: 10px 0 5px;
-  color: #ff3b3b;
+.cards{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
 }
 
-.card p {
-  margin-bottom: 10px;
-  color: #aaa;
+.card{
+    width:250px;
+    background:#1b1b1b;
+    border:1px solid orange;
+    border-radius:12px;
+    padding:25px;
+}
+
+.card h3{
+    color:orange;
+}
+
+.card p{
+    margin-top:15px;
+    font-size:28px;
+    color:gold;
+}
+
+.register{
+    padding:80px 20px;
+    text-align:center;
+}
+
+.register h2{
+    color:gold;
+    margin-bottom:30px;
+}
+
+form{
+    max-width:500px;
+    margin:auto;
+}
+
+input{
+    width:100%;
+    padding:15px;
+    margin-bottom:15px;
+    background:#1a1a1a;
+    border:1px solid orange;
+    color:white;
+}
+
+form button{
+    width:100%;
+    padding:15px;
+    background:orange;
+    border:none;
+    color:white;
+    cursor:pointer;
+}
+
+.members{
+    padding:80px 20px;
+}
+
+.members h2{
+    text-align:center;
+    color:gold;
+    margin-bottom:30px;
+}
+
+table{
+    width:90%;
+    margin:auto;
+    border-collapse:collapse;
+}
+
+th{
+    background:orange;
+}
+
+th,td{
+    border:1px solid #444;
+    padding:12px;
+    text-align:center;
+}
+
+tr:nth-child(even){
+    background:#1a1a1a;
+}
+
+footer{
+    text-align:center;
+    padding:20px;
+    background:#111;
+    border-top:2px solid gold;
+}
+
+@media(max-width:768px){
+
+    header{
+        flex-direction:column;
+        gap:10px;
+    }
+
+    .overlay h1{
+        font-size:40px;
+    }
+
+    .cards{
+        flex-direction:column;
+        align-items:center;
+    }
 }
