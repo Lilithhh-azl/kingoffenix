@@ -1,66 +1,62 @@
-const API_URL = "https://script.google.com/macros/s/AKfycbwOiKolJcYsZzKKNwEHmzJTt3JSt1iq6Tey3NYsON93Loar_Cn2B-_9Vuawb-Xh6Gk/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbzFqaXmrdH61hKQbiXlGyLX-3hQgVaJnfvfPmTmbUeH3Vhrs4KRTnOxIW0GwL2aW78J/exec";
 
-/* LOAD MEMBERS */
-async function loadMembers() {
-  try {
-    const res = await fetch(API_URL);
-    const data = await res.json();
+loadMembers();
 
-    const container = document.getElementById("members");
-    container.innerHTML = "";
+document
+.getElementById("registerForm")
+.addEventListener("submit", async function(e){
 
-    data.forEach(m => {
-      const card = document.createElement("div");
-      card.className = "card";
+    e.preventDefault();
 
-      card.innerHTML = `
-        <img src="${m.avatar || 'https://via.placeholder.com/200'}">
-        <h3>${m.nama}</h3>
-        <p>${m.ign || '-'}</p>
-      `;
+    const data = {
+        nickname: document.getElementById("nickname").value,
+        class: document.getElementById("class").value,
+        level: document.getElementById("level").value
+    };
 
-      container.appendChild(card);
-    });
+    try{
 
-  } catch (err) {
-    console.error("Load error:", err);
-  }
-}
+        await fetch(API_URL,{
+            method:"POST",
+            body:JSON.stringify(data)
+        });
 
-/* FORM SUBMIT */
-document.getElementById("regForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
+        alert("Registrasi berhasil!");
 
-  const status = document.getElementById("status");
-  status.innerText = "Sending...";
+        this.reset();
 
-  const data = {
-    nama: nama.value,
-    hp: hp.value,
-    ign: ign.value,
-    avatar: avatar.value
-  };
+        loadMembers();
 
-  try {
-    const res = await fetch(API_URL, {
-      method: "POST",
-      body: JSON.stringify(data)
-    });
+    }catch(err){
 
-    const result = await res.json();
+        alert("Gagal registrasi");
 
-    if (result.status === "success") {
-      status.innerText = "Success!";
-      regForm.reset();
-      loadMembers();
-    } else {
-      status.innerText = "Failed!";
     }
 
-  } catch (err) {
-    status.innerText = "Error connection";
-  }
 });
 
-/* INIT */
-loadMembers();
+async function loadMembers(){
+
+    const res = await fetch(API_URL);
+
+    const data = await res.json();
+
+    const table = document.getElementById("memberTable");
+
+    table.innerHTML="";
+
+    data.forEach(member=>{
+
+        table.innerHTML += `
+            <tr>
+                <td>${member.nickname}</td>
+                <td>${member.class}</td>
+                <td>${member.level}</td>
+            </tr>
+        `;
+
+    });
+
+    document.getElementById("memberCount").innerText = data.length;
+
+}
