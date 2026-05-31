@@ -11,7 +11,7 @@ document
     const data = {
         nickname: document.getElementById("nickname").value,
         class: document.getElementById("class").value,
-        nohp: document.getElementById("nohp").value
+        nomor: document.getElementById("nomor").value
     };
 
     try{
@@ -53,7 +53,7 @@ async function loadMembers() {
                style="width:50px;height:50px;border-radius:50%;border:2px solid orange;">
         </td>
 
-        <td>${isAdmin ? m.nohp : "🔒 Hidden"}</td>
+        <td>${isAdmin ? m.nomor : "🔒 Hidden"}</td>
       </tr>
     `;
   });
