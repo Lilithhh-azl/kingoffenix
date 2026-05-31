@@ -10,7 +10,7 @@ document
 
     const data = {
         nickname: document.getElementById("nickname").value,
-        class: document.getElementById("class").value,
+        avatar: document.getElementById("avatar").value,
         nomor: document.getElementById("nomor").value
     };
 
