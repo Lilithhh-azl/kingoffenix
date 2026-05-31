@@ -1,122 +1,37 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>King Of Fenix</title>
-
-<!-- FIX: pakai ./ biar aman di GitHub Pages -->
-<link rel="stylesheet" href="./style.css">
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<title>King of Fenix</title>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-<nav class="navbar">
-
-<a href="#dashboard" class="logo">
-  <!-- FIX: pastikan folder & nama file benar -->
-  <img src="./assets/Logo.png" class="logo-img" alt="logo">
-  <span>KING OF FENIX</span>
-</a>
-
-<ul class="nav-links">
-  <li><a href="#register">Register</a></li>
-  <li><a href="#members">Members</a></li>
-</ul>
-
-<button class="admin-btn" onclick="openModal()">Admin</button>
-
-</nav>
-
-<!-- HERO -->
-<section class="hero" id="dashboard">
-<div class="hero-overlay"></div>
-
-<div class="hero-content">
-  <h1>RISE TOGETHER</h1>
-  <h2>CONQUER TOGETHER</h2>
-  <p>Guild Recruitment System</p>
-
-  <a href="#register" class="primary-btn">Join Guild</a>
-</div>
-</section>
-
-<!-- REGISTER -->
-<section id="register">
-
-<h2 class="section-title">🔥 Guild Registration</h2>
-
-<div class="register-card">
-
-<form id="guildForm" class="register-form">
-
-<div class="form-left">
-
-<label>Nama</label>
-<input type="text" name="nama" required>
-
-<label>Nomor HP</label>
-<input type="tel" name="hp" required>
-
-<label>IGN</label>
-<input type="text" name="ign" required>
-
+<div class="hero">
+  <h1>KING OF FENIX</h1>
+  <p>Guild of Legends</p>
 </div>
 
-<div class="form-right">
+<div class="form-section">
+  <h2>Join Guild</h2>
 
-<label>Avatar</label>
-<input type="file" name="avatar" accept="image/*" required>
-  <script src="script.js"></script>
-  <form id="guildForm">
-<button type="submit">Daftar</button>
+  <form id="regForm">
+    <input type="text" id="nama" placeholder="Nama" required>
+    <input type="text" id="hp" placeholder="No HP" required>
+    <input type="text" id="ign" placeholder="IGN">
+    <input type="text" id="avatar" placeholder="Avatar URL">
+    <button type="submit">Daftar</button>
+  </form>
 
+  <p id="status"></p>
 </div>
 
-</form>
-
+<div class="section">
+  <h2>Members</h2>
+  <div id="members" class="grid"></div>
 </div>
 
-</section>
-
-<!-- MEMBERS -->
-<section id="members">
-
-<h2 class="section-title">Guild Members</h2>
-
-<div class="search-box">
-<i class="fa fa-search"></i>
-<input type="text" id="memberSearch" placeholder="Search member...">
-</div>
-
-<div id="memberList" class="member-grid"></div>
-
-</section>
-
-<!-- MODAL -->
-<div id="loginModal" class="modal">
-
-<div class="modal-content">
-
-<h2>Admin Login</h2>
-
-<input type="password" id="adminPassword" placeholder="Password">
-
-<button onclick="adminLogin()">Login</button>
-<button onclick="closeModal()">Close</button>
-
-</div>
-
-</div>
-
-<!-- FIX: gunakan ./ juga -->
-<script src="./script.js"></script>
-
+<script src="script.js"></script>
 </body>
 </html>
