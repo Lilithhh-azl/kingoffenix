@@ -14,7 +14,7 @@ async function loadMembers() {
       card.className = "card";
 
       card.innerHTML = `
-        <img src="${m.avatar || 'https://via.placeholder.com/150'}">
+        <img src="${m.avatar || 'https://via.placeholder.com/200'}">
         <h3>${m.nama}</h3>
         <p>${m.ign || '-'}</p>
       `;
@@ -23,7 +23,7 @@ async function loadMembers() {
     });
 
   } catch (err) {
-    console.error(err);
+    console.error("Load error:", err);
   }
 }
 
@@ -32,13 +32,13 @@ document.getElementById("regForm").addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const status = document.getElementById("status");
-  status.innerText = "Mengirim...";
+  status.innerText = "Sending...";
 
   const data = {
-    nama: document.getElementById("nama").value,
-    hp: document.getElementById("hp").value,
-    ign: document.getElementById("ign").value,
-    avatar: document.getElementById("avatar").value
+    nama: nama.value,
+    hp: hp.value,
+    ign: ign.value,
+    avatar: avatar.value
   };
 
   try {
@@ -50,16 +50,17 @@ document.getElementById("regForm").addEventListener("submit", async (e) => {
     const result = await res.json();
 
     if (result.status === "success") {
-      status.innerText = "Berhasil daftar!";
-      document.getElementById("regForm").reset();
+      status.innerText = "Success!";
+      regForm.reset();
       loadMembers();
     } else {
-      status.innerText = "Gagal daftar";
+      status.innerText = "Failed!";
     }
 
   } catch (err) {
-    status.innerText = "Error koneksi";
+    status.innerText = "Error connection";
   }
 });
 
+/* INIT */
 loadMembers();
