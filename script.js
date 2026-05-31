@@ -1,4 +1,4 @@
-const API_URL = "https://script.google.com/macros/s/AKfycby-h-kwPP7jwLyXjb5qE22G01kv5JrE027Dt_YEaTef-ZhjgLl8CZDc_ZxwiSdGTTrZ/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbwOiKolJcYsZzKKNwEHmzJTt3JSt1iq6Tey3NYsON93Loar_Cn2B-_9Vuawb-Xh6Gk/exec";
 
 /* LOAD MEMBERS */
 async function loadMembers() {
