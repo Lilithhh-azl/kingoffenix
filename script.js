@@ -41,7 +41,7 @@ async function loadMembers(){
 
     const data = await res.json();
 
-    const table = document.getElementById("memberTable");
+    const table = document.getElementById("membersTable");
 
     table.innerHTML="";
 
