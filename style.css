@@ -1,60 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap');
+
 body {
   margin: 0;
-  font-family: Arial;
-  background: #0a0a0a;
+  font-family: 'Orbitron', sans-serif;
+  background: radial-gradient(circle at top, #111, #000);
   color: white;
 }
 
 /* HERO */
 .hero {
-  height: 60vh;
+  height: 70vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: radial-gradient(circle, #1a1a1a, black);
+  text-align: center;
+
+  background:
+    radial-gradient(circle at center, rgba(255,0,0,0.25), transparent 60%),
+    radial-gradient(circle at top, #111, #000);
 }
 
 .hero h1 {
-  font-size: 50px;
-  color: red;
-  text-shadow: 0 0 20px red;
+  font-size: 70px;
+  color: #ff2a2a;
+  text-shadow: 0 0 20px red, 0 0 60px rgba(255,0,0,0.6);
+  letter-spacing: 5px;
+}
+
+.hero p {
+  color: #aaa;
+  letter-spacing: 2px;
 }
 
 /* FORM */
 .form-section {
-  padding: 30px;
+  padding: 40px;
   text-align: center;
 }
 
 form {
+  width: 320px;
+  margin: auto;
   display: flex;
   flex-direction: column;
-  width: 300px;
-  margin: auto;
-  gap: 10px;
+  gap: 12px;
+
+  padding: 20px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,0,0,0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
 }
 
 input {
-  padding: 10px;
-  border-radius: 8px;
+  padding: 12px;
   border: none;
+  border-radius: 8px;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  outline: none;
 }
 
 button {
-  padding: 10px;
-  background: red;
-  color: white;
+  padding: 12px;
   border: none;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #ff0000, #8b0000);
+  color: white;
   cursor: pointer;
+  transition: 0.3s;
 }
 
 button:hover {
-  box-shadow: 0 0 15px red;
+  transform: scale(1.05);
+  box-shadow: 0 0 20px red;
 }
 
-/* MEMBER */
-.section {
+/* MEMBERS */
+.members-section {
   padding: 40px;
   text-align: center;
 }
@@ -67,21 +91,32 @@ button:hover {
 }
 
 .card {
-  width: 180px;
-  background: #111;
-  border-radius: 12px;
+  width: 200px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,0,0,0.2);
+  border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 0 10px rgba(255,0,0,0.3);
   transition: 0.3s;
+  backdrop-filter: blur(8px);
 }
 
 .card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px red;
+  transform: translateY(-8px);
+  box-shadow: 0 0 25px rgba(255,0,0,0.6);
 }
 
 .card img {
   width: 100%;
-  height: 180px;
+  height: 200px;
   object-fit: cover;
+}
+
+.card h3 {
+  margin: 10px 0 5px;
+  color: #ff3b3b;
+}
+
+.card p {
+  margin-bottom: 10px;
+  color: #aaa;
 }
