@@ -53,7 +53,7 @@ async function loadMembers() {
                style="width:50px;height:50px;border-radius:50%;border:2px solid orange;">
         </td>
 
-        <td>${isAdmin ? m.nomor : "🔒 Hidden"}</td>
+        <td>${isAdmin ? m.nomor: "🔒 Hidden"}</td>
       </tr>
     `;
   });
